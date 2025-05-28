@@ -5,8 +5,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import point.zzicback.member.domain.AuthenticatedMember;
 import point.zzicback.member.domain.Member;
-import point.zzicback.member.domain.SignUpCommand;
-import point.zzicback.member.domain.dto.SignInCommand;
+import point.zzicback.member.domain.dto.command.SignUpCommand;
+import point.zzicback.member.domain.dto.command.SignInCommand;
 import point.zzicback.member.domain.dto.response.MemberMeResponse;
 import point.zzicback.member.persistance.MemberRepository;
 
@@ -26,7 +26,7 @@ public class MemberService {
         Member member = new Member();
         member.setEmail(signUpCommand.email());
         member.setPassword(passwordEncoder.encode(signUpCommand.password()));
-        member.setNickname(signUpCommand.nickName());
+        member.setNickname(signUpCommand.nickname());
 
         memberRepository.save(member);
     }
